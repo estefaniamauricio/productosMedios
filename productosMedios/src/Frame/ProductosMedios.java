@@ -131,6 +131,10 @@ public class ProductosMedios extends JFrame {
             }
 
             if (ae.getSource() == borrar) {
+                textoX0.setText("");
+                textoX1.setText("");
+                textoRi.setText("");
+                
                 System.out.println("borrar");
             }
 
