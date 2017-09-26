@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
@@ -32,7 +33,7 @@ public class ProductosMedios extends JFrame {
 
         ri = new JLabel();
         textoRi = new JTextField();
-        
+
         D = new JLabel();
         textoD = new JTextField();
 
@@ -73,12 +74,12 @@ public class ProductosMedios extends JFrame {
         textoRi.setFont(new Font("Cambria Math", Font.PLAIN, 18));
         textoRi.setToolTipText("Número de iteraciones");
         textoRi.setBounds(380, 53, 50, 25);
-        
+
         D.setText("D=");
         D.setFont(new Font("Cambria Math", Font.PLAIN, 18));
         D.setForeground(Color.YELLOW);
         D.setBounds(175, 80, 50, 50);
-                
+
         textoD.setFont(new Font("Cambria Math", Font.PLAIN, 18));
         textoD.setToolTipText("Número de dígitos");
         textoD.setBounds(205, 93, 100, 25);
@@ -124,7 +125,57 @@ public class ProductosMedios extends JFrame {
         @Override
         public void actionPerformed(ActionEvent ae) {
             if (ae.getSource() == calcular) {
-                System.out.println("calcular");
+                int X0 = Integer.parseInt(textoX0.getText());
+                String valorX0 = String.valueOf(X0);
+
+                int X1 = Integer.parseInt(textoX1.getText());
+                String valorX1 = String.valueOf(X1);
+
+                int veces = Integer.parseInt(textoRi.getText());
+
+                String nt = String.valueOf(X0);
+                int dimencionX0 = nt.length();
+                System.out.println(dimencionX0);
+                if (valorX0.length() != valorX1.length()) {
+                    JOptionPane.showMessageDialog(null, "Los numeros deben ser iguales en Longitud");
+                    textoX0.setText("");
+                    textoX1.setText("");
+                }
+                for (int i = 0; i < veces; i++) {
+
+                    int mult = X0 * X1;
+                    String nuevoX1 = String.valueOf(X1);
+                    String Multiplicacion = String.valueOf(mult);
+
+                    int dimencion = Multiplicacion.length();
+
+                    if (dimencion % 2 == 0) {
+                        int d1 = (dimencion - dimencionX0) / 2;
+                        //System.out.println("d1 "+d1);
+                        int d2 = d1 + dimencionX0;
+                        //System.out.println("d2 "+d2);
+
+                        String strMult = String.valueOf(mult);
+                        String vRaiz = strMult.substring(d1, d2);
+                        //System.out.println("vRaiz " +vRaiz);
+                        X0 = Integer.parseInt(nuevoX1);
+                        X1 = Integer.parseInt(vRaiz);
+                        System.out.println("x" + i + " " + vRaiz);
+                    } else {
+                        String cadena = "0" + Multiplicacion;
+                        dimencion = cadena.length();
+
+                        int d1 = (dimencion - dimencionX0) / 2;
+                        int d2 = d1 + dimencionX0;
+                        String nn = cadena;
+                        String vRaiz = nn.substring(d1, d2);
+                        X0 = Integer.parseInt(nuevoX1);
+                        X1 = Integer.parseInt(vRaiz);
+
+                        System.out.println("x" + i + " " + vRaiz);
+                    }
+
+                }
             }
 
             if (ae.getSource() == borrar) {
