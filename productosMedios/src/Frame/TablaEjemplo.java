@@ -8,7 +8,7 @@ import java.awt.event.*;
 public class TablaEjemplo extends JFrame {
 
     public TablaEjemplo() {
-        Object[][] datos = {
+        Object [][] datos = {
             {"Juan", new Integer(25), new Boolean(false)},
             {"Sonia", new Integer(33), new Boolean(true)},
             {"Pedro", new Integer(42), new Boolean(false)},
@@ -34,7 +34,7 @@ public class TablaEjemplo extends JFrame {
         dtm.addRow(newRow);
 
         // Modificar celda especifica
-        dtm.setValueAt("XXX", 3, 3); // Row/Col
+        dtm.setValueAt("XXX", 3, 1); // Row/Col
         table.setPreferredScrollableViewportSize(new Dimension(250, 100));
         JScrollPane scrollPane = new JScrollPane(table);
         getContentPane().add(scrollPane, BorderLayout.CENTER);
