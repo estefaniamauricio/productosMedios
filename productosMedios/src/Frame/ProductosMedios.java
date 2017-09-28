@@ -146,6 +146,7 @@ public class ProductosMedios extends JFrame {
 
     private void calcular() {
         X0 = Integer.parseInt(textoX0.getText());
+        
         String valorX0 = String.valueOf(X0);
 
         X1 = Integer.parseInt(textoX1.getText());
@@ -181,6 +182,7 @@ public class ProductosMedios extends JFrame {
                 //System.out.println("vRaiz " +vRaiz);
                 X0 = Integer.parseInt(nuevoX1);
                 X1 = Integer.parseInt(vRaiz);
+                System.out.println("Resultado multipli "+mult);
                 System.out.println("x" + i + " " + vRaiz);
             } else {
                 String cadena = "0" + Multiplicacion;
